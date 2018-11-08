@@ -1,0 +1,8 @@
+useDynLib(SuperpixelImageSegmentation, .registration = TRUE)
+importFrom(Rcpp, evalCpp)
+
+export(Image_Segmentation)
+importFrom(OpenImageR,NormalizeObject)
+importFrom(OpenImageR,imageShow)
+importFrom(OpenImageR,readImage)
+importFrom(R6,R6Class)
