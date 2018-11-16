@@ -410,6 +410,10 @@ Rcpp::List image_segmentation(arma::cube input_image, std::string method = "slic
     }
   }
 
-  return Rcpp::List::create(Rcpp::Named("KMeans_image_data") = new_im, Rcpp::Named("masks") = masks_lst, Rcpp::Named("centr") = getcent, Rcpp::Named("AP_image_data") = ap_new_im);
+  return Rcpp::List::create(Rcpp::Named("KMeans_image_data") = new_im, 
+                            Rcpp::Named("KMeans_clusters") = getclust, 
+                            Rcpp::Named("masks") = masks_lst, 
+                            Rcpp::Named("centr") = getcent, 
+                            Rcpp::Named("AP_image_data") = ap_new_im);
 }
 

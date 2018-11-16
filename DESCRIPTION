@@ -1,8 +1,8 @@
 Package: SuperpixelImageSegmentation
 Type: Package
 Title: Superpixel Image Segmentation
-Version: 1.0.0
-Date: 2018-11-08
+Version: 1.0.1
+Date: 2018-11-16
 Author: Lampros Mouselimis <mouselimislampros@gmail.com>
 Maintainer: Lampros Mouselimis <mouselimislampros@gmail.com>
 Description: Image Segmentation using Superpixels, Affinity Propagation and Kmeans Clustering. The R code is based primarily on the article "Image Segmentation using SLIC Superpixels and Affinity Propagation Clustering", Bao Zhou, International Journal of Science and Research (IJSR), 2013. 
