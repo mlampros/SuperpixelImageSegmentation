@@ -90,12 +90,19 @@
 #' im = OpenImageR::readImage(path)
 #'
 #' init = Image_Segmentation$new()
+#' 
+#' num_spix = 10           # for illustration purposes
+#' # num_spix = 600        # recommended number of superpixels
 #'
-#' spx = init$spixel_segmentation(input_image = im, superpixel = 600, AP_data = TRUE,
-#'                                use_median = TRUE, sim_color_radius = 10)
+#' spx = init$spixel_segmentation(input_image = im, 
+#'                                superpixel = num_spix, 
+#'                                AP_data = TRUE,
+#'                                use_median = TRUE, 
+#'                                sim_color_radius = 10)
 #'
-#' # plt_im = init$spixel_masks_show(display_all = TRUE)
-#'
+#' \dontrun{
+#' plt_im = init$spixel_masks_show(display_all = TRUE)
+#' }
 
 Image_Segmentation <- R6::R6Class("Image_Segmentation",
 

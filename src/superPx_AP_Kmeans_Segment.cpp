@@ -37,7 +37,7 @@ arma::mat apply_rcpp(arma::cube &input) {
 
   arma::mat res(input.n_rows * input.n_cols, 3);
 
-  for (int i = 0; i < (input.n_rows * input.n_cols); i++) {
+  for (unsigned int i = 0; i < (input.n_rows * input.n_cols); i++) {
     res(i,0) = input.slice(0)(i);
     res(i,1) = input.slice(1)(i);
     res(i,2) = input.slice(2)(i);
@@ -58,9 +58,9 @@ arma::uvec NAs_matrix(arma::mat &x) {
   int item = 0;
 
   if (x.has_nan()) {
-    for (int j = 0; j < x.n_cols; j++) {
+    for (unsigned int j = 0; j < x.n_cols; j++) {
       arma::uvec find_row = arma::find_nonfinite(x.col(j));
-      for (int k = 0; k < find_row.n_elem; k++) {
+      for (unsigned int k = 0; k < find_row.n_elem; k++) {
         item++;
         all_rows.resize(item);
         all_rows(item-1) = find_row(k);
@@ -153,8 +153,8 @@ Rcpp::List image_segmentation(arma::cube input_image, std::string method = "slic
     simil_mt = arma::normalise(simil_mt);
     if (!use_median) {
       int norm_items = 0;
-      for (int f = 0; f < simil_mt.n_rows; f++) {
-        for (int ff = 0; ff < simil_mt.n_cols; ff++) {
+      for (unsigned int f = 0; f < simil_mt.n_rows; f++) {
+        for (unsigned int ff = 0; ff < simil_mt.n_cols; ff++) {
           if (f != ff) {
             norm_avg += simil_mt(f,ff);
             norm_items++;
@@ -228,12 +228,12 @@ Rcpp::List image_segmentation(arma::cube input_image, std::string method = "slic
       ap_keys.push_back(kv.first);
     }
     std::unordered_map<int, std::vector<int> > idx_clusters;
-    for (int d = 0; d < ap_keys.size(); d++) {
+    for (unsigned int d = 0; d < ap_keys.size(); d++) {
       std::vector<int> sub_clust = clusters[ap_keys[d]];
-      for (int dd = 0; dd < sub_clust.size(); dd++) {
+      for (unsigned int dd = 0; dd < sub_clust.size(); dd++) {
         arma::uvec idx = arma::find(labels_obj == sub_clust[dd]);
         if (idx.size() > 0) {
-          for (int ddd = 0; ddd < idx.size(); ddd++) {
+          for (unsigned int ddd = 0; ddd < idx.size(); ddd++) {
             idx_clusters[ap_keys[d]].push_back(idx[ddd]);                                             // assign the indices of each sub-cluster
           }
         }
@@ -241,7 +241,7 @@ Rcpp::List image_segmentation(arma::cube input_image, std::string method = "slic
     }
     for (int f = 0; f < CLUSTS; f++) {
       arma::uvec tmp_cl_idx = arma::conv_to<arma::uvec>::from(idx_clusters[ap_keys[f]]);
-      for (int ff = 0; ff < input_image.n_slices; ff++) {
+      for (unsigned int ff = 0; ff < input_image.n_slices; ff++) {
         double avg_clust_idx;                                                                         // return the transformed image based on the specified colour-type
         if (colour_type == "RGB") {
           if (use_median) {
@@ -365,7 +365,7 @@ Rcpp::List image_segmentation(arma::cube input_image, std::string method = "slic
 
     new_im.set_size(input_image.n_rows, input_image.n_cols, input_image.n_slices);
     new_im.fill(0);
-    for (int f = 0; f < getclust.n_elem; f++) {
+    for (unsigned int f = 0; f < getclust.n_elem; f++) {
       new_im.slice(0)(f) = getcent(getclust(f), 0);                               // each observation is associated with the nearby centroid
       new_im.slice(1)(f) = getcent(getclust(f), 1);
       new_im.slice(2)(f) = getcent(getclust(f), 2);

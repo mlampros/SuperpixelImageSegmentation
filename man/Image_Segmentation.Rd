@@ -113,11 +113,18 @@ im = OpenImageR::readImage(path)
 
 init = Image_Segmentation$new()
 
-spx = init$spixel_segmentation(input_image = im, superpixel = 600, AP_data = TRUE,
-                               use_median = TRUE, sim_color_radius = 10)
+num_spix = 10           # for illustration purposes
+# num_spix = 600        # recommended number of superpixels
 
-# plt_im = init$spixel_masks_show(display_all = TRUE)
+spx = init$spixel_segmentation(input_image = im, 
+                               superpixel = num_spix, 
+                               AP_data = TRUE,
+                               use_median = TRUE, 
+                               sim_color_radius = 10)
 
+\dontrun{
+plt_im = init$spixel_masks_show(display_all = TRUE)
+}
 }
 \references{
 https://pdfs.semanticscholar.org/6533/654973054b742e725fd433265700c07b48a2.pdf , "Image Segmentation using SLIC Superpixels and Affinity Propagation Clustering", Bao Zhou, 2013, International Journal of Science and Research (IJSR)
