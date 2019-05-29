@@ -363,7 +363,7 @@ Rcpp::List image_segmentation(arma::cube input_image, std::string method = "slic
       }
     }
 
-    new_im.set_size(input_image.n_rows, input_image.n_cols, input_image.n_slices);
+    new_im.set_size(input_image.n_rows, input_image.n_cols, input_image.n_slices);        // see for a similar way to create the cluster-masks in R : https://github.com/mlampros/ClusterR/issues/14#issuecomment-457692420
     new_im.fill(0);
     for (unsigned int f = 0; f < getclust.n_elem; f++) {
       new_im.slice(0)(f) = getcent(getclust(f), 0);                               // each observation is associated with the nearby centroid

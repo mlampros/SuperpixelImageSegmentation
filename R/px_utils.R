@@ -38,7 +38,7 @@
 #' The quantity \emph{colorradius} adjusts the number of clusters, and if its value is low, the number of targets would increase, which leads to more detailed segmentation results.
 #'
 #' If the \emph{adjust_centroids_and_return_masks} parameter is set to FALSE then the output \emph{kmeans_image_data} will be an RGB image, otherwise it will be a black-and-white image.
-#' 
+#'
 #' \emph{colour_type} parameter: RGB (Red-Green-Blue), LAB (Lightness, A-colour-dimension, B-colour-dimension) or HSV (Hue, Saturation, Value) colour.
 #'
 #' Higher resolution images give better results.
@@ -90,19 +90,16 @@
 #' im = OpenImageR::readImage(path)
 #'
 #' init = Image_Segmentation$new()
-#' 
+#'
 #' num_spix = 10           # for illustration purposes
 #' # num_spix = 600        # recommended number of superpixels
 #'
-#' spx = init$spixel_segmentation(input_image = im, 
-#'                                superpixel = num_spix, 
+#' spx = init$spixel_segmentation(input_image = im,
+#'                                superpixel = num_spix,
 #'                                AP_data = TRUE,
-#'                                use_median = TRUE, 
+#'                                use_median = TRUE,
 #'                                sim_color_radius = 10)
 #'
-#' \dontrun{
-#' plt_im = init$spixel_masks_show(display_all = TRUE)
-#' }
 
 Image_Segmentation <- R6::R6Class("Image_Segmentation",
 
@@ -124,6 +121,8 @@ Image_Segmentation <- R6::R6Class("Image_Segmentation",
                                                                    kmeans_initializer = "kmeans++", colour_type = "RGB", compactness_factor = 20,
                                                                    adjust_centroids_and_return_masks = FALSE, sim_normalize = FALSE, sim_wL = 3, sim_wA = 10, sim_wB = 10,
                                                                    sim_color_radius = 20, verbose = FALSE) {
+
+                                      if (!kmeans_initializer %in% c('kmeans++', 'random', 'optimal_init', 'quantile_init')) stop("available initializer methods are 'kmeans++', 'random', 'optimal_init' and 'quantile_init'", call. = F)
 
                                       if (verbose) {
                                         t_start = proc.time()
@@ -258,12 +257,12 @@ Image_Segmentation <- R6::R6Class("Image_Segmentation",
                                       }
                                       return(list(rows = rows, cols = cols))
                                     },
-                                    
-                                    
+
+
                                     #------------------------------------------
                                     # elapsed time in hours & minutes & seconds
                                     #------------------------------------------
-                                    
+
                                     elapsed_time = function(secs) {
                                       tmp_hours = as.integer((secs / 60) / 60)
                                       tmp_hours_minutes = (secs / 60) %% 60
