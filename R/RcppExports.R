@@ -17,7 +17,7 @@ is_mt_finite <- function(x) {
     .Call(`_SuperpixelImageSegmentation_is_mt_finite`, x)
 }
 
-image_segmentation <- function(input_image, method = "slic", num_superpixel = 200L, kmeans_method = "", AP_data = FALSE, use_median = TRUE, minib_kmeans_batch = 10L, minib_kmeans_init_fraction = 0.5, kmeans_num_init = 3L, kmeans_max_iters = 100L, kmeans_initializer = "kmeans++", colour_type = "RGB", compactness_factor = 20, adjust_centroids_and_return_masks = FALSE, sim_normalize = FALSE, sim_wL = 3L, sim_wA = 10L, sim_wB = 10L, sim_color_radius = 20L, verbose = FALSE) {
-    .Call(`_SuperpixelImageSegmentation_image_segmentation`, input_image, method, num_superpixel, kmeans_method, AP_data, use_median, minib_kmeans_batch, minib_kmeans_init_fraction, kmeans_num_init, kmeans_max_iters, kmeans_initializer, colour_type, compactness_factor, adjust_centroids_and_return_masks, sim_normalize, sim_wL, sim_wA, sim_wB, sim_color_radius, verbose)
+image_segmentation <- function(input_image, method = "slic", num_superpixel = 200L, kmeans_method = "", AP_data = FALSE, use_median = TRUE, minib_kmeans_batch = 10L, minib_kmeans_init_fraction = 0.5, kmeans_num_init = 3L, kmeans_max_iters = 100L, kmeans_initializer = "kmeans++", colour_type = "RGB", compactness_factor = 20, adjust_centroids_and_return_masks = FALSE, return_labels_2_dimensionsional = FALSE, sim_normalize = FALSE, sim_wL = 3L, sim_wA = 10L, sim_wB = 10L, sim_color_radius = 20L, verbose = FALSE) {
+    .Call(`_SuperpixelImageSegmentation_image_segmentation`, input_image, method, num_superpixel, kmeans_method, AP_data, use_median, minib_kmeans_batch, minib_kmeans_init_fraction, kmeans_num_init, kmeans_max_iters, kmeans_initializer, colour_type, compactness_factor, adjust_centroids_and_return_masks, return_labels_2_dimensionsional, sim_normalize, sim_wL, sim_wA, sim_wB, sim_color_radius, verbose)
 }
 

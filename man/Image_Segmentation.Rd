@@ -4,58 +4,12 @@
 \name{Image_Segmentation}
 \alias{Image_Segmentation}
 \title{Segmentation of images based on Superpixels, Affinity propagation and Kmeans clustering}
-\format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 # init <- Image_Segmentation$new()
 }
-\arguments{
-\item{input_image}{a 3-dimensional input image (the range of the pixel values should be preferably in the range 0 to 255)}
-
-\item{method}{a character string specifying the superpixel method. It can be either "slic" or "slico"}
-
-\item{superpixel}{a numeric value specifying the number of superpixels}
-
-\item{kmeans_method}{a character string specifying the kmeans method. If not empty ("") then it can be either "kmeans" or "mini_batch_kmeans"}
-
-\item{AP_data}{a boolean. If TRUE then the affinity propagation image data will be computed and returned}
-
-\item{use_median}{a boolean. If TRUE then the median will be used rather than the mean value for the inner computations}
-
-\item{minib_kmeans_batch}{the size of the mini batches}
-
-\item{kmeans_num_init}{number of times the algorithm will be run with different centroid seeds}
-
-\item{kmeans_max_iters}{the maximum number of clustering iterations}
-
-\item{minib_kmeans_init_fraction}{percentage of data to use for the initialization centroids (applies if initializer is \emph{kmeans++} or \emph{optimal_init}). Should be a float number between 0.0 and 1.0.}
-
-\item{kmeans_initializer}{the method of initialization. One of, \emph{optimal_init}, \emph{quantile_init}, \emph{kmeans++} and \emph{random}. See details for more information}
-
-\item{colour_type}{a character string specifying the colour type. It can be one of "RGB", "LAB" or "HSV"}
-
-\item{compactness_factor}{a numeric value specifying the compactness parameter in case that \emph{method} is "slic"}
-
-\item{adjust_centroids_and_return_masks}{a boolean. If TRUE and the \emph{kmeans_method} parameter is NOT empty ("") then the centroids will be adjusted and image-masks will be returned. This will allow me to plot the masks using the \emph{spixel_masks_show} method.}
-
-\item{sim_normalize}{a boolean. If TRUE then the constructed similarity matrix will be normalised to have unit p-norm (see the armadillo documentation for more details)}
-
-\item{sim_wL}{a numeric value specifying the weight for the \emph{"L"} channel of the image (see the details section for more information)}
-
-\item{sim_wA}{a numeric value specifying the weight for the \emph{"A"} channel of the image (see the details section for more information)}
-
-\item{sim_wB}{a numeric value specifying the weight for the \emph{"B"} channel of the image (see the details section for more information)}
-
-\item{sim_color_radius}{a numeric value specifying the \emph{colorradius} (see the details section for more information)}
-
-\item{delay_display_seconds}{a numeric value specifying the seconds to delay the display of the next image (It displays the images consecutively). This parameter applies only if the \emph{display_all} is set to FALSE (spixel_masks_show method)}
-
-\item{display_all}{a boolean. If TRUE then all images will be displayed in a grid  (spixel_masks_show method)}
-
-\item{margin_btw_plots}{a float number specifying the margins between the plots if the \emph{display_all} parameter is set to TRUE  (spixel_masks_show method)}
-
-\item{verbose}{a boolean. If TRUE then information will be printed in the console  (spixel_masks_show method)}
-}
 \description{
+Segmentation of images based on Superpixels, Affinity propagation and Kmeans clustering
+
 Segmentation of images based on Superpixels, Affinity propagation and Kmeans clustering
 }
 \details{
@@ -100,6 +54,11 @@ effect if the similarity matrix is normalized.
  \item{\code{spixel_masks_show()}}{}
 
  \item{\code{--------------}}{}
+
+ \item{\code{spixel_clusters_show()}}{}
+
+ \item{\code{--------------}}{}
+
  }
 }
 
@@ -120,10 +79,201 @@ spx = init$spixel_segmentation(input_image = im,
                                superpixel = num_spix,
                                AP_data = TRUE,
                                use_median = TRUE,
+                               return_labels_2_dimensionsional = TRUE,
                                sim_color_radius = 10)
+
+
+#...........................
+# plot the superpixel labels
+#...........................
+
+plt = init$spixel_clusters_show(spix_labels = spx$spix_labels,
+                                color_palette = grDevices::rainbow,
+                                parameter_list_png = NULL)
+
+# plt
+
+
+#....................................................
+# create a binary image for a specified cluster label
+#....................................................
+
+pix_values = spx$spix_labels
+
+target_cluster = 3                               # determine clusters visually ('plt' variable)
+
+pix_values[pix_values != target_cluster] = 0     # set all other values to 0 (background)
+pix_values[pix_values == target_cluster] = 1     # set the target_cluster to 1 (binary image)
+
+# OpenImageR::imageShow(pix_values)
 
 }
 \references{
 https://pdfs.semanticscholar.org/6533/654973054b742e725fd433265700c07b48a2.pdf , "Image Segmentation using SLIC Superpixels and Affinity Propagation Clustering", Bao Zhou, 2013, International Journal of Science and Research (IJSR)
 }
-\keyword{datasets}
+\section{Methods}{
+\subsection{Public methods}{
+\itemize{
+\item \href{#method-new}{\code{Image_Segmentation$new()}}
+\item \href{#method-spixel_segmentation}{\code{Image_Segmentation$spixel_segmentation()}}
+\item \href{#method-spixel_masks_show}{\code{Image_Segmentation$spixel_masks_show()}}
+\item \href{#method-spixel_clusters_show}{\code{Image_Segmentation$spixel_clusters_show()}}
+\item \href{#method-clone}{\code{Image_Segmentation$clone()}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
+\subsection{Method \code{new()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Image_Segmentation$new()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-spixel_segmentation"></a>}}
+\if{latex}{\out{\hypertarget{method-spixel_segmentation}{}}}
+\subsection{Method \code{spixel_segmentation()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Image_Segmentation$spixel_segmentation(
+  input_image,
+  method = "slic",
+  superpixel = 200,
+  kmeans_method = "",
+  AP_data = FALSE,
+  use_median = TRUE,
+  minib_kmeans_batch = 10,
+  minib_kmeans_init_fraction = 0.5,
+  kmeans_num_init = 3,
+  kmeans_max_iters = 100,
+  kmeans_initializer = "kmeans++",
+  colour_type = "RGB",
+  compactness_factor = 20,
+  adjust_centroids_and_return_masks = FALSE,
+  return_labels_2_dimensionsional = FALSE,
+  sim_normalize = FALSE,
+  sim_wL = 3,
+  sim_wA = 10,
+  sim_wB = 10,
+  sim_color_radius = 20,
+  verbose = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{input_image}}{a 3-dimensional input image (the range of the pixel values should be preferably in the range 0 to 255)}
+
+\item{\code{method}}{a character string specifying the superpixel method. It can be either "slic" or "slico"}
+
+\item{\code{superpixel}}{a numeric value specifying the number of superpixels}
+
+\item{\code{kmeans_method}}{a character string specifying the kmeans method. If not empty ("") then it can be either "kmeans" or "mini_batch_kmeans"}
+
+\item{\code{AP_data}}{a boolean. If TRUE then the affinity propagation image data will be computed and returned}
+
+\item{\code{use_median}}{a boolean. If TRUE then the median will be used rather than the mean value for the inner computations}
+
+\item{\code{minib_kmeans_batch}}{the size of the mini batches}
+
+\item{\code{minib_kmeans_init_fraction}}{percentage of data to use for the initialization centroids (applies if initializer is \emph{kmeans++} or \emph{optimal_init}). Should be a float number between 0.0 and 1.0.}
+
+\item{\code{kmeans_num_init}}{number of times the algorithm will be run with different centroid seeds}
+
+\item{\code{kmeans_max_iters}}{the maximum number of clustering iterations}
+
+\item{\code{kmeans_initializer}}{the method of initialization. One of, \emph{optimal_init}, \emph{quantile_init}, \emph{kmeans++} and \emph{random}. See details for more information}
+
+\item{\code{colour_type}}{a character string specifying the colour type. It can be one of "RGB", "LAB" or "HSV"}
+
+\item{\code{compactness_factor}}{a numeric value specifying the compactness parameter in case that \emph{method} is "slic"}
+
+\item{\code{adjust_centroids_and_return_masks}}{a boolean. If TRUE and the \emph{kmeans_method} parameter is NOT empty ("") then the centroids will be adjusted and image-masks will be returned. This will allow me to plot the masks using the \emph{spixel_masks_show} method.}
+
+\item{\code{return_labels_2_dimensionsional}}{a boolean. If TRUE then a matrix of labels based on the output superpixels in combination with the Affinity Propagation clusters will be returned}
+
+\item{\code{sim_normalize}}{a boolean. If TRUE then the constructed similarity matrix will be normalised to have unit p-norm (see the armadillo documentation for more details)}
+
+\item{\code{sim_wL}}{a numeric value specifying the weight for the \emph{"L"} channel of the image (see the details section for more information)}
+
+\item{\code{sim_wA}}{a numeric value specifying the weight for the \emph{"A"} channel of the image (see the details section for more information)}
+
+\item{\code{sim_wB}}{a numeric value specifying the weight for the \emph{"B"} channel of the image (see the details section for more information)}
+
+\item{\code{sim_color_radius}}{a numeric value specifying the \emph{colorradius} (see the details section for more information)}
+
+\item{\code{verbose}}{a boolean. If TRUE then information will be printed in the console  (spixel_masks_show method)}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-spixel_masks_show"></a>}}
+\if{latex}{\out{\hypertarget{method-spixel_masks_show}{}}}
+\subsection{Method \code{spixel_masks_show()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Image_Segmentation$spixel_masks_show(
+  delay_display_seconds = 3,
+  display_all = FALSE,
+  margin_btw_plots = 0.15,
+  verbose = FALSE
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{delay_display_seconds}}{a numeric value specifying the seconds to delay the display of the next image (It displays the images consecutively). This parameter applies only if the \emph{display_all} is set to FALSE (spixel_masks_show method)}
+
+\item{\code{display_all}}{a boolean. If TRUE then all images will be displayed in a grid  (spixel_masks_show method)}
+
+\item{\code{margin_btw_plots}}{a float number specifying the margins between the plots if the \emph{display_all} parameter is set to TRUE  (spixel_masks_show method)}
+
+\item{\code{verbose}}{a boolean. If TRUE then information will be printed in the console  (spixel_masks_show method)}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-spixel_clusters_show"></a>}}
+\if{latex}{\out{\hypertarget{method-spixel_clusters_show}{}}}
+\subsection{Method \code{spixel_clusters_show()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Image_Segmentation$spixel_clusters_show(
+  spix_labels,
+  color_palette = grDevices::rainbow,
+  parameter_list_png = NULL
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{spix_labels}}{a matrix. I can retrieve the "spix_labels" parameter by setting the "return_labels_2_dimensionsional" parameter to TRUE in the "spixel_segmentation" method  (spixel_clusters_show method)}
+
+\item{\code{color_palette}}{one of the color palettes. Use  ?grDevices::topo.colors  to see the available color palettes}
+
+\item{\code{parameter_list_png}}{either NULL or a list of parameters passed to the  ?grDevices::png  function, such as  list(filename = 'img.png', width = 100, height = 100, units = "px", pointsize = 12, bg = "white", type = "quartz")}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Image_Segmentation$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
+}
+}

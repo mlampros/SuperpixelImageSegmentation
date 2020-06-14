@@ -90,11 +90,27 @@ bool is_mt_finite(arma::mat x) {
 //----------------------------
 
 // [[Rcpp::export]]
-Rcpp::List image_segmentation(arma::cube input_image, std::string method = "slic", int num_superpixel = 200, std::string kmeans_method = "",
-                              bool AP_data = false, bool use_median = true, int minib_kmeans_batch = 10, double minib_kmeans_init_fraction = 0.5,
-                              int kmeans_num_init = 3, int kmeans_max_iters = 100, std::string kmeans_initializer = "kmeans++", std::string colour_type = "RGB",
-                              double compactness_factor = 20, bool adjust_centroids_and_return_masks = false, bool sim_normalize = false,
-                              int sim_wL = 3, int sim_wA = 10, int sim_wB = 10, int sim_color_radius = 20, bool verbose = false) {
+Rcpp::List image_segmentation(arma::cube input_image,
+                              std::string method = "slic",
+                              int num_superpixel = 200,
+                              std::string kmeans_method = "",
+                              bool AP_data = false,
+                              bool use_median = true,
+                              int minib_kmeans_batch = 10,
+                              double minib_kmeans_init_fraction = 0.5,
+                              int kmeans_num_init = 3,
+                              int kmeans_max_iters = 100,
+                              std::string kmeans_initializer = "kmeans++",
+                              std::string colour_type = "RGB",
+                              double compactness_factor = 20,
+                              bool adjust_centroids_and_return_masks = false,
+                              bool return_labels_2_dimensionsional = false,
+                              bool sim_normalize = false,
+                              int sim_wL = 3,
+                              int sim_wA = 10,
+                              int sim_wB = 10,
+                              int sim_color_radius = 20,
+                              bool verbose = false) {
 
   Affinity_Propagation afpr;
   clustR::ClustHeader clsh;
@@ -410,10 +426,17 @@ Rcpp::List image_segmentation(arma::cube input_image, std::string method = "slic
     }
   }
 
-  return Rcpp::List::create(Rcpp::Named("KMeans_image_data") = new_im, 
-                            Rcpp::Named("KMeans_clusters") = getclust, 
-                            Rcpp::Named("masks") = masks_lst, 
-                            Rcpp::Named("centr") = getcent, 
-                            Rcpp::Named("AP_image_data") = ap_new_im);
+  Rcpp::List tmp_lst = Rcpp::List::create(Rcpp::Named("KMeans_image_data") = new_im,
+                                          Rcpp::Named("KMeans_clusters") = getclust,
+                                          Rcpp::Named("masks") = masks_lst,
+                                          Rcpp::Named("centr") = getcent,
+                                          Rcpp::Named("AP_image_data") = ap_new_im);
+
+  if (return_labels_2_dimensionsional) {
+    tmp_lst["spix_labels"] = labels_obj;
+    tmp_lst["AP_clusters"] = clusters;
+  }
+
+  return tmp_lst;
 }
 

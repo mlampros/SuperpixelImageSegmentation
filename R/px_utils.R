@@ -17,6 +17,7 @@
 #' @param colour_type a character string specifying the colour type. It can be one of "RGB", "LAB" or "HSV"
 #' @param compactness_factor a numeric value specifying the compactness parameter in case that \emph{method} is "slic"
 #' @param adjust_centroids_and_return_masks a boolean. If TRUE and the \emph{kmeans_method} parameter is NOT empty ("") then the centroids will be adjusted and image-masks will be returned. This will allow me to plot the masks using the \emph{spixel_masks_show} method.
+#' @param return_labels_2_dimensionsional a boolean. If TRUE then a matrix of labels based on the output superpixels in combination with the Affinity Propagation clusters will be returned
 #' @param sim_normalize a boolean. If TRUE then the constructed similarity matrix will be normalised to have unit p-norm (see the armadillo documentation for more details)
 #' @param sim_wL a numeric value specifying the weight for the \emph{"L"} channel of the image (see the details section for more information)
 #' @param sim_wA a numeric value specifying the weight for the \emph{"A"} channel of the image (see the details section for more information)
@@ -26,6 +27,9 @@
 #' @param display_all a boolean. If TRUE then all images will be displayed in a grid  (spixel_masks_show method)
 #' @param margin_btw_plots a float number specifying the margins between the plots if the \emph{display_all} parameter is set to TRUE  (spixel_masks_show method)
 #' @param verbose a boolean. If TRUE then information will be printed in the console  (spixel_masks_show method)
+#' @param spix_labels a matrix. I can retrieve the "spix_labels" parameter by setting the "return_labels_2_dimensionsional" parameter to TRUE in the "spixel_segmentation" method  (spixel_clusters_show method)
+#' @param color_palette one of the color palettes. Use  ?grDevices::topo.colors  to see the available color palettes
+#' @param parameter_list_png either NULL or a list of parameters passed to the  ?grDevices::png  function, such as  list(filename = 'img.png', width = 100, height = 100, units = "px", pointsize = 12, bg = "white", type = "quartz")
 #'
 #' @export
 #' @references
@@ -61,9 +65,9 @@
 #'
 #' @docType class
 #' @importFrom R6 R6Class
-#' @importFrom OpenImageR NormalizeObject
-#' @importFrom OpenImageR imageShow
-#' @importFrom OpenImageR readImage
+#' @importFrom OpenImageR NormalizeObject rotateFixed imageShow readImage
+#' @importFrom grDevices png rainbow dev.off
+#' @importFrom lattice levelplot
 #'
 #' @section Methods:
 #'
@@ -79,6 +83,11 @@
 #'  \item{\code{spixel_masks_show()}}{}
 #'
 #'  \item{\code{--------------}}{}
+#'
+#'  \item{\code{spixel_clusters_show()}}{}
+#'
+#'  \item{\code{--------------}}{}
+#'
 #'  }
 #' @usage # init <- Image_Segmentation$new()
 #' @examples
@@ -98,7 +107,33 @@
 #'                                superpixel = num_spix,
 #'                                AP_data = TRUE,
 #'                                use_median = TRUE,
+#'                                return_labels_2_dimensionsional = TRUE,
 #'                                sim_color_radius = 10)
+#'
+#'
+#' #...........................
+#' # plot the superpixel labels
+#' #...........................
+#'
+#' plt = init$spixel_clusters_show(spix_labels = spx$spix_labels,
+#'                                 color_palette = grDevices::rainbow,
+#'                                 parameter_list_png = NULL)
+#'
+#' # plt
+#'
+#'
+#' #....................................................
+#' # create a binary image for a specified cluster label
+#' #....................................................
+#'
+#' pix_values = spx$spix_labels
+#'
+#' target_cluster = 3                               # determine clusters visually ('plt' variable)
+#'
+#' pix_values[pix_values != target_cluster] = 0     # set all other values to 0 (background)
+#' pix_values[pix_values == target_cluster] = 1     # set the target_cluster to 1 (binary image)
+#'
+#' # OpenImageR::imageShow(pix_values)
 #'
 
 Image_Segmentation <- R6::R6Class("Image_Segmentation",
@@ -112,15 +147,31 @@ Image_Segmentation <- R6::R6Class("Image_Segmentation",
                                     },
 
 
-                                    #--------------------------------------------------------------------------------------------------
+                                    #.................................................................................
                                     # image segmentation using superpixels, Affinity propagation and Kmeans clustering
-                                    #--------------------------------------------------------------------------------------------------
+                                    #.................................................................................
 
-                                    spixel_segmentation = function(input_image, method = "slic", superpixel = 200, kmeans_method = "", AP_data = FALSE, use_median = TRUE,
-                                                                   minib_kmeans_batch = 10, minib_kmeans_init_fraction = 0.5, kmeans_num_init = 3, kmeans_max_iters = 100,
-                                                                   kmeans_initializer = "kmeans++", colour_type = "RGB", compactness_factor = 20,
-                                                                   adjust_centroids_and_return_masks = FALSE, sim_normalize = FALSE, sim_wL = 3, sim_wA = 10, sim_wB = 10,
-                                                                   sim_color_radius = 20, verbose = FALSE) {
+                                    spixel_segmentation = function(input_image,
+                                                                   method = "slic",
+                                                                   superpixel = 200,
+                                                                   kmeans_method = "",
+                                                                   AP_data = FALSE,
+                                                                   use_median = TRUE,
+                                                                   minib_kmeans_batch = 10,
+                                                                   minib_kmeans_init_fraction = 0.5,
+                                                                   kmeans_num_init = 3,
+                                                                   kmeans_max_iters = 100,
+                                                                   kmeans_initializer = "kmeans++",
+                                                                   colour_type = "RGB",
+                                                                   compactness_factor = 20,
+                                                                   adjust_centroids_and_return_masks = FALSE,
+                                                                   return_labels_2_dimensionsional = FALSE,
+                                                                   sim_normalize = FALSE,
+                                                                   sim_wL = 3,
+                                                                   sim_wA = 10,
+                                                                   sim_wB = 10,
+                                                                   sim_color_radius = 20,
+                                                                   verbose = FALSE) {
 
                                       if (!kmeans_initializer %in% c('kmeans++', 'random', 'optimal_init', 'quantile_init')) stop("available initializer methods are 'kmeans++', 'random', 'optimal_init' and 'quantile_init'", call. = F)
 
@@ -130,26 +181,59 @@ Image_Segmentation <- R6::R6Class("Image_Segmentation",
                                       if (adjust_centroids_and_return_masks) {
                                         private$masks_flag = T
                                       }
-                                      private$lst_obj = image_segmentation(input_image, method, superpixel, kmeans_method, AP_data, use_median, minib_kmeans_batch,
-                                                                           minib_kmeans_init_fraction, kmeans_num_init, kmeans_max_iters, kmeans_initializer,
-                                                                           colour_type, compactness_factor, adjust_centroids_and_return_masks, sim_normalize,
-                                                                           sim_wL, sim_wA, sim_wB, sim_color_radius, verbose)
+                                      private$lst_obj = image_segmentation(input_image = input_image,
+                                                                           method = method,
+                                                                           num_superpixel = superpixel,
+                                                                           kmeans_method = kmeans_method,
+                                                                           AP_data = AP_data,
+                                                                           use_median = use_median,
+                                                                           minib_kmeans_batch = minib_kmeans_batch,
+                                                                           minib_kmeans_init_fraction = minib_kmeans_init_fraction,
+                                                                           kmeans_num_init = kmeans_num_init,
+                                                                           kmeans_max_iters = kmeans_max_iters,
+                                                                           kmeans_initializer = kmeans_initializer,
+                                                                           colour_type = colour_type,
+                                                                           compactness_factor = compactness_factor,
+                                                                           adjust_centroids_and_return_masks = adjust_centroids_and_return_masks,
+                                                                           return_labels_2_dimensionsional = return_labels_2_dimensionsional,
+                                                                           sim_normalize = sim_normalize,
+                                                                           sim_wL = sim_wL,
+                                                                           sim_wA = sim_wA,
+                                                                           sim_wB = sim_wB,
+                                                                           sim_color_radius = sim_color_radius,
+                                                                           verbose = verbose)
+
+                                      if (return_labels_2_dimensionsional) {
+                                        lbs_out = matrix(0, nrow = nrow(private$lst_obj$spix_labels), ncol = ncol(private$lst_obj$spix_labels))    # initialize a new matrix because the pixel values of the 'spix_labels' matrix might overlap with the cluster numbers (iterations: 'i')
+                                        for (i in 1:length(private$lst_obj$AP_clusters)) {
+                                          idx = which(private$lst_obj$spix_labels %in% private$lst_obj$AP_clusters[[i]])                           # more efficient than using c++
+                                          lbs_out[idx] = i
+                                        }
+
+                                        private$lst_obj$spix_labels = NULL                                                                         # remove the 'spix_labels' object
+                                        private$lst_obj$AP_clusters = NULL                                                                         # remove the 'AP-clusters' object
+                                        private$lst_obj$spix_labels = lbs_out                                                                      # assign the initialized and populated matrix to the output list
+                                      }
+
                                       if (verbose) {
                                         t_end = proc.time()
                                         time_total = as.numeric((t_end - t_start)['elapsed'])
                                         time_ = private$elapsed_time(time_total)
                                         cat(time_, "\n")
                                       }
+
                                       return(private$lst_obj)
                                     },
 
 
-                                    #-----------------------------------------------------------------
+                                    #.................................................................
                                     # plot the image segmentation masks (based on the output clusters)
-                                    #-----------------------------------------------------------------
+                                    #.................................................................
 
-                                    spixel_masks_show = function(delay_display_seconds = 3, display_all = FALSE,
-                                                                 margin_btw_plots = 0.15, verbose = FALSE) {
+                                    spixel_masks_show = function(delay_display_seconds = 3,
+                                                                 display_all = FALSE,
+                                                                 margin_btw_plots = 0.15,
+                                                                 verbose = FALSE) {
 
                                       if (is.null(private$lst_obj)) { stop("First run the 'spixel_segmentation' method with the 'adjust_centroids_and_return_masks' parameter set to TRUE!", call. = F) }
                                       if (!private$masks_flag) { stop("The 'adjust_centroids_and_return_masks' parameter of the 'spixel_segmentation' method should be set to TRUE!", call. = F) }
@@ -187,6 +271,43 @@ Image_Segmentation <- R6::R6Class("Image_Segmentation",
                                           }
                                         }
                                       }
+                                    },
+
+
+                                    #......................................................................................................
+                                    # plot 2-dimensional superpixel clusters along with a legend so that I'll be in place to distinguish
+                                    # between the cluster labels
+                                    #
+                                    # I can retrieve the "spix_labels" parameter by setting the "return_labels_2_dimensionsional" parameter
+                                    # to TRUE in the "spixel_segmentation" method of this R6 class
+                                    #......................................................................................................
+
+                                    spixel_clusters_show = function(spix_labels,
+                                                                    color_palette = grDevices::rainbow,
+                                                                    parameter_list_png = NULL) {
+
+                                      if (!inherits(spix_labels, 'matrix')) stop("The 'spix_labels' parameter must be of type matrix (set the 'return_labels_2_dimensionsional' parameter to TRUE in the 'spixel_segmentation' method)!", call. = F)
+
+                                      LEN_UNQ = length(unique(as.vector(spix_labels)))
+                                      spix_labels = OpenImageR::rotateFixed(spix_labels, angle = 90)                          # rotate the output labels to visualize the image
+
+                                      if (!is.null(parameter_list_png)) {
+                                        do.call(grDevices::png, parameter_list_png)
+                                      }
+
+                                      lat_plt = lattice::levelplot(spix_labels,
+                                                                   xlab = NULL,
+                                                                   ylab = NULL,
+                                                                   cuts = LEN_UNQ - 1,
+                                                                   col.regions = do.call(color_palette, list(n = LEN_UNQ)),   # use a color-palette with default parameters
+                                                                   useRaster = TRUE)                                          # for the 'lattice::levelplot()' see: https://stackoverflow.com/a/15188726/8302386   +  using 'useRaster' the plot is returned faster
+
+                                      if (!is.null(parameter_list_png)) {
+                                        print(lat_plt)
+                                        grDevices::dev.off()
+                                      }
+
+                                      return(lat_plt)
                                     }
 
                                   ),
@@ -196,10 +317,10 @@ Image_Segmentation <- R6::R6Class("Image_Segmentation",
                                     lst_obj = NULL,
                                     masks_flag = F,
 
-                                    #-------------------------------------
+                                    #.....................................
                                     # divisors calculation
                                     # https://stackoverflow.com/a/19465753
-                                    #-------------------------------------
+                                    #.....................................
 
                                     divisors = function(x){
                                       y <- seq_len(x)
@@ -207,9 +328,9 @@ Image_Segmentation <- R6::R6Class("Image_Segmentation",
                                     },
 
 
-                                    #---------------------------------------------------------------------------------
+                                    #.................................................................................
                                     # calculate the grid-rows and grid-cols (for specific number of sub-matrices < 53)
-                                    #---------------------------------------------------------------------------------
+                                    #.................................................................................
 
                                     calc_grid_rows_cols = function(num_masks) {
 
@@ -259,9 +380,9 @@ Image_Segmentation <- R6::R6Class("Image_Segmentation",
                                     },
 
 
-                                    #------------------------------------------
+                                    #..........................................
                                     # elapsed time in hours & minutes & seconds
-                                    #------------------------------------------
+                                    #..........................................
 
                                     elapsed_time = function(secs) {
                                       tmp_hours = as.integer((secs / 60) / 60)

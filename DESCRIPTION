@@ -1,8 +1,8 @@
 Package: SuperpixelImageSegmentation
 Type: Package
 Title: Superpixel Image Segmentation
-Version: 1.0.1
-Date: 2019-05-29
+Version: 1.0.2
+Date: 2020-06-13
 Author: Lampros Mouselimis <mouselimislampros@gmail.com>
 Maintainer: Lampros Mouselimis <mouselimislampros@gmail.com>
 BugReports: https://github.com/mlampros/SuperpixelImageSegmentation/issues
@@ -12,11 +12,11 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Depends: R(>= 3.2)
-Imports: Rcpp (>= 0.12.10), R6, OpenImageR
+Imports: Rcpp (>= 0.12.10), R6, OpenImageR, grDevices, lattice
 LinkingTo: Rcpp, RcppArmadillo (>= 0.9.1), ClusterR, OpenImageR
 Suggests:
     testthat,
     covr,
     knitr,
     rmarkdown
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.0
