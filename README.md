@@ -1,10 +1,10 @@
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/SuperpixelImageSegmentation)](http://cran.r-project.org/package=SuperpixelImageSegmentation)
-[![Travis-CI Build Status](https://travis-ci.org/mlampros/SuperpixelImageSegmentation.svg?branch=master)](https://travis-ci.org/mlampros/SuperpixelImageSegmentation)
+
+[![tic](https://github.com/mlampros/SuperpixelImageSegmentation/workflows/tic/badge.svg?branch=master)](https://github.com/mlampros/SuperpixelImageSegmentation/actions)
 [![codecov.io](https://codecov.io/github/mlampros/SuperpixelImageSegmentation/coverage.svg?branch=master)](https://codecov.io/github/mlampros/SuperpixelImageSegmentation?branch=master)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/mlampros/SuperpixelImageSegmentation?branch=master&svg=true)](https://ci.appveyor.com/project/mlampros/SuperpixelImageSegmentation/branch/master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/SuperpixelImageSegmentation)](http://cran.r-project.org/package=SuperpixelImageSegmentation)
 [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/SuperpixelImageSegmentation?color=blue)](http://www.r-pkg.org/pkg/SuperpixelImageSegmentation)
-[![Dependencies](https://tinyverse.netlify.com/badge/SuperpixelImageSegmentation)](https://cran.r-project.org/package=SuperpixelImageSegmentation)
 <a href="https://www.buymeacoffee.com/VY0x8snyh" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" height="21px" ></a>
+[![Dependencies](https://tinyverse.netlify.com/badge/SuperpixelImageSegmentation)](https://cran.r-project.org/package=SuperpixelImageSegmentation)
 
 
 ## SuperpixelImageSegmentation
