@@ -156,6 +156,10 @@ https://pdfs.semanticscholar.org/6533/654973054b742e725fd433265700c07b48a2.pdf ,
   sim_wA = 10,
   sim_wB = 10,
   sim_color_radius = 20,
+  ap_maxits = 1000,
+  ap_convits = 100,
+  ap_dampfact = 0.9,
+  ap_nonoise = 0,
   verbose = FALSE
 )}\if{html}{\out{</div>}}
 }
@@ -202,6 +206,14 @@ https://pdfs.semanticscholar.org/6533/654973054b742e725fd433265700c07b48a2.pdf ,
 \item{\code{sim_wB}}{a numeric value specifying the weight for the \emph{"B"} channel of the image (see the details section for more information)}
 
 \item{\code{sim_color_radius}}{a numeric value specifying the \emph{colorradius} (see the details section for more information)}
+
+\item{\code{ap_maxits}}{a numeric value specifying the maximum number of iterations for the Affinity Propagation Clustering (defaults to 1000)}
+
+\item{\code{ap_convits}}{a numeric value. If the estimated exemplars stay fixed for convits iterations, the affinity propagation algorithm terminates early (defaults to 100)}
+
+\item{\code{ap_dampfact}}{a float number specifying the update equation damping level in [0.5, 1). Higher values correspond to heavy damping, which may be needed if oscillations occur in the Affinity Propagation Clustering (defaults to 0.9)}
+
+\item{\code{ap_nonoise}}{a float number. The affinity propagation algorithm adds a small amount of noise to \emph{data} to prevent degenerate cases; this disables that.}
 
 \item{\code{verbose}}{a boolean. If TRUE then information will be printed in the console  (spixel_masks_show method)}
 }

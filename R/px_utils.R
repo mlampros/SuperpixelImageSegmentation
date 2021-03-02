@@ -23,6 +23,10 @@
 #' @param sim_wA a numeric value specifying the weight for the \emph{"A"} channel of the image (see the details section for more information)
 #' @param sim_wB a numeric value specifying the weight for the \emph{"B"} channel of the image (see the details section for more information)
 #' @param sim_color_radius a numeric value specifying the \emph{colorradius} (see the details section for more information)
+#' @param ap_maxits a numeric value specifying the maximum number of iterations for the Affinity Propagation Clustering (defaults to 1000)
+#' @param ap_convits a numeric value. If the estimated exemplars stay fixed for convits iterations, the affinity propagation algorithm terminates early (defaults to 100)
+#' @param ap_dampfact a float number specifying the update equation damping level in [0.5, 1). Higher values correspond to heavy damping, which may be needed if oscillations occur in the Affinity Propagation Clustering (defaults to 0.9)
+#' @param ap_nonoise a float number. The affinity propagation algorithm adds a small amount of noise to \emph{data} to prevent degenerate cases; this disables that.
 #' @param delay_display_seconds a numeric value specifying the seconds to delay the display of the next image (It displays the images consecutively). This parameter applies only if the \emph{display_all} is set to FALSE (spixel_masks_show method)
 #' @param display_all a boolean. If TRUE then all images will be displayed in a grid  (spixel_masks_show method)
 #' @param margin_btw_plots a float number specifying the margins between the plots if the \emph{display_all} parameter is set to TRUE  (spixel_masks_show method)
@@ -171,6 +175,10 @@ Image_Segmentation <- R6::R6Class("Image_Segmentation",
                                                                    sim_wA = 10,
                                                                    sim_wB = 10,
                                                                    sim_color_radius = 20,
+                                                                   ap_maxits = 1000,
+                                                                   ap_convits = 100,
+                                                                   ap_dampfact = 0.9,
+                                                                   ap_nonoise = 0.0,
                                                                    verbose = FALSE) {
 
                                       if (!kmeans_initializer %in% c('kmeans++', 'random', 'optimal_init', 'quantile_init')) stop("available initializer methods are 'kmeans++', 'random', 'optimal_init' and 'quantile_init'", call. = F)
@@ -201,6 +209,12 @@ Image_Segmentation <- R6::R6Class("Image_Segmentation",
                                                                            sim_wA = sim_wA,
                                                                            sim_wB = sim_wB,
                                                                            sim_color_radius = sim_color_radius,
+                                                                           ap_maxits = ap_maxits,
+                                                                           ap_convits = ap_convits,
+                                                                           ap_dampfact = ap_dampfact,
+                                                                           ap_details = verbose,             # use 'verbose' also for the affinity propagation 'details'
+                                                                           ap_nonoise = ap_nonoise,
+                                                                           ap_time = verbose,                # use 'verbose' also for the affinity propagation 'time' (this might also give an indication if the affinity propagation algorithm is a bottleneck for specific use cases - especially if the dissimilarity matrix becomes too big due to the specified number of super-pixels)
                                                                            verbose = verbose)
 
                                       if (return_labels_2_dimensionsional) {

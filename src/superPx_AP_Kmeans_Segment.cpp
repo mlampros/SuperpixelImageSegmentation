@@ -110,6 +110,12 @@ Rcpp::List image_segmentation(arma::cube input_image,
                               int sim_wA = 10,
                               int sim_wB = 10,
                               int sim_color_radius = 20,
+                              int ap_maxits = 1000,
+                              int ap_convits = 100,
+                              double ap_dampfact = 0.9,
+                              bool ap_details = false,
+                              double ap_nonoise = 0.0,
+                              bool ap_time = false,
                               bool verbose = false) {
 
   Affinity_Propagation afpr;
@@ -205,7 +211,7 @@ Rcpp::List image_segmentation(arma::cube input_image,
   std::vector<double> preference;
   preference.push_back(set_preference_value);
 
-  Rcpp::List afpr_res = afpr.affinity_propagation(simil_mt, preference, 1000, 100, 0.9, false, 0.0, 2.2204e-16, false);                        // the affinity propagation algorithm returns clusters for the superpixels, thus it's not possible to 'adjust_centroids_and_return_masks' as is the case in kmeans
+  Rcpp::List afpr_res = afpr.affinity_propagation(simil_mt, preference, ap_maxits, ap_convits, ap_dampfact, ap_details, ap_nonoise, 2.2204e-16, ap_time);       // the affinity propagation algorithm returns clusters for the superpixels, thus it's not possible to 'adjust_centroids_and_return_masks' as is the case in kmeans
 
   int affinty_num_clusters = Rcpp::as<int>(afpr_res["K"]);                                                                                     // number of clusters
   std::string aff_str_num = std::to_string(affinty_num_clusters);

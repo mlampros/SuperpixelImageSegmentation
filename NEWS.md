@@ -1,4 +1,7 @@
 
+## SuperpixelImageSegmentation 1.0.3
+
+* I've included the Affinity Propagation Clustering parameters in the *spixel_segmentation* method of the *Image_Segmentation* R6 class and especially the *ap_maxits* (maximum number of iterations), *ap_convits* (convits iterations), *ap_dampfact* (update equation damping level) and *ap_nonoise* (small amount of noise to prevent degenerate cases). Although the default parameter values work for the majority of Image Segmentation tasks, adjustments might be necessary for specific use cases.
 
 ## SuperpixelImageSegmentation 1.0.2
 

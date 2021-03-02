@@ -55,8 +55,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // image_segmentation
-Rcpp::List image_segmentation(arma::cube input_image, std::string method, int num_superpixel, std::string kmeans_method, bool AP_data, bool use_median, int minib_kmeans_batch, double minib_kmeans_init_fraction, int kmeans_num_init, int kmeans_max_iters, std::string kmeans_initializer, std::string colour_type, double compactness_factor, bool adjust_centroids_and_return_masks, bool return_labels_2_dimensionsional, bool sim_normalize, int sim_wL, int sim_wA, int sim_wB, int sim_color_radius, bool verbose);
-RcppExport SEXP _SuperpixelImageSegmentation_image_segmentation(SEXP input_imageSEXP, SEXP methodSEXP, SEXP num_superpixelSEXP, SEXP kmeans_methodSEXP, SEXP AP_dataSEXP, SEXP use_medianSEXP, SEXP minib_kmeans_batchSEXP, SEXP minib_kmeans_init_fractionSEXP, SEXP kmeans_num_initSEXP, SEXP kmeans_max_itersSEXP, SEXP kmeans_initializerSEXP, SEXP colour_typeSEXP, SEXP compactness_factorSEXP, SEXP adjust_centroids_and_return_masksSEXP, SEXP return_labels_2_dimensionsionalSEXP, SEXP sim_normalizeSEXP, SEXP sim_wLSEXP, SEXP sim_wASEXP, SEXP sim_wBSEXP, SEXP sim_color_radiusSEXP, SEXP verboseSEXP) {
+Rcpp::List image_segmentation(arma::cube input_image, std::string method, int num_superpixel, std::string kmeans_method, bool AP_data, bool use_median, int minib_kmeans_batch, double minib_kmeans_init_fraction, int kmeans_num_init, int kmeans_max_iters, std::string kmeans_initializer, std::string colour_type, double compactness_factor, bool adjust_centroids_and_return_masks, bool return_labels_2_dimensionsional, bool sim_normalize, int sim_wL, int sim_wA, int sim_wB, int sim_color_radius, int ap_maxits, int ap_convits, double ap_dampfact, bool ap_details, double ap_nonoise, bool ap_time, bool verbose);
+RcppExport SEXP _SuperpixelImageSegmentation_image_segmentation(SEXP input_imageSEXP, SEXP methodSEXP, SEXP num_superpixelSEXP, SEXP kmeans_methodSEXP, SEXP AP_dataSEXP, SEXP use_medianSEXP, SEXP minib_kmeans_batchSEXP, SEXP minib_kmeans_init_fractionSEXP, SEXP kmeans_num_initSEXP, SEXP kmeans_max_itersSEXP, SEXP kmeans_initializerSEXP, SEXP colour_typeSEXP, SEXP compactness_factorSEXP, SEXP adjust_centroids_and_return_masksSEXP, SEXP return_labels_2_dimensionsionalSEXP, SEXP sim_normalizeSEXP, SEXP sim_wLSEXP, SEXP sim_wASEXP, SEXP sim_wBSEXP, SEXP sim_color_radiusSEXP, SEXP ap_maxitsSEXP, SEXP ap_convitsSEXP, SEXP ap_dampfactSEXP, SEXP ap_detailsSEXP, SEXP ap_nonoiseSEXP, SEXP ap_timeSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -80,8 +80,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type sim_wA(sim_wASEXP);
     Rcpp::traits::input_parameter< int >::type sim_wB(sim_wBSEXP);
     Rcpp::traits::input_parameter< int >::type sim_color_radius(sim_color_radiusSEXP);
+    Rcpp::traits::input_parameter< int >::type ap_maxits(ap_maxitsSEXP);
+    Rcpp::traits::input_parameter< int >::type ap_convits(ap_convitsSEXP);
+    Rcpp::traits::input_parameter< double >::type ap_dampfact(ap_dampfactSEXP);
+    Rcpp::traits::input_parameter< bool >::type ap_details(ap_detailsSEXP);
+    Rcpp::traits::input_parameter< double >::type ap_nonoise(ap_nonoiseSEXP);
+    Rcpp::traits::input_parameter< bool >::type ap_time(ap_timeSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
-    rcpp_result_gen = Rcpp::wrap(image_segmentation(input_image, method, num_superpixel, kmeans_method, AP_data, use_median, minib_kmeans_batch, minib_kmeans_init_fraction, kmeans_num_init, kmeans_max_iters, kmeans_initializer, colour_type, compactness_factor, adjust_centroids_and_return_masks, return_labels_2_dimensionsional, sim_normalize, sim_wL, sim_wA, sim_wB, sim_color_radius, verbose));
+    rcpp_result_gen = Rcpp::wrap(image_segmentation(input_image, method, num_superpixel, kmeans_method, AP_data, use_median, minib_kmeans_batch, minib_kmeans_init_fraction, kmeans_num_init, kmeans_max_iters, kmeans_initializer, colour_type, compactness_factor, adjust_centroids_and_return_masks, return_labels_2_dimensionsional, sim_normalize, sim_wL, sim_wA, sim_wB, sim_color_radius, ap_maxits, ap_convits, ap_dampfact, ap_details, ap_nonoise, ap_time, verbose));
     return rcpp_result_gen;
 END_RCPP
 }
