@@ -73,7 +73,7 @@ Segmentation of images based on Superpixels, Affinity propagation and Kmeans clu
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">SuperpixelImageSegmentation</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.3</span>
       </span>
     </div>
 
@@ -212,6 +212,10 @@ effect if the similarity matrix is normalized.</p>
   sim_wA <span class='op'>=</span> <span class='fl'>10</span>,
   sim_wB <span class='op'>=</span> <span class='fl'>10</span>,
   sim_color_radius <span class='op'>=</span> <span class='fl'>20</span>,
+  ap_maxits <span class='op'>=</span> <span class='fl'>1000</span>,
+  ap_convits <span class='op'>=</span> <span class='fl'>100</span>,
+  ap_dampfact <span class='op'>=</span> <span class='fl'>0.9</span>,
+  ap_nonoise <span class='op'>=</span> <span class='fl'>0</span>,
   verbose <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre><p></div></p>
 
@@ -256,6 +260,14 @@ effect if the similarity matrix is normalized.</p>
 <dt><code>sim_wB</code></dt><dd><p>a numeric value specifying the weight for the <em>"B"</em> channel of the image (see the details section for more information)</p></dd>
 
 <dt><code>sim_color_radius</code></dt><dd><p>a numeric value specifying the <em>colorradius</em> (see the details section for more information)</p></dd>
+
+<dt><code>ap_maxits</code></dt><dd><p>a numeric value specifying the maximum number of iterations for the Affinity Propagation Clustering (defaults to 1000)</p></dd>
+
+<dt><code>ap_convits</code></dt><dd><p>a numeric value. If the estimated exemplars stay fixed for convits iterations, the affinity propagation algorithm terminates early (defaults to 100)</p></dd>
+
+<dt><code>ap_dampfact</code></dt><dd><p>a float number specifying the update equation damping level in [0.5, 1). Higher values correspond to heavy damping, which may be needed if oscillations occur in the Affinity Propagation Clustering (defaults to 0.9)</p></dd>
+
+<dt><code>ap_nonoise</code></dt><dd><p>a float number. The affinity propagation algorithm adds a small amount of noise to <em>data</em> to prevent degenerate cases; this disables that.</p></dd>
 
 <dt><code>verbose</code></dt><dd><p>a boolean. If TRUE then information will be printed in the console  (spixel_masks_show method)</p></dd>
 
