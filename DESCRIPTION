@@ -2,7 +2,7 @@ Package: SuperpixelImageSegmentation
 Type: Package
 Title: Superpixel Image Segmentation
 Version: 1.0.3
-Date: 2021-03-02
+Date: 2021-03-06
 Author: Lampros Mouselimis <mouselimislampros@gmail.com>
 Maintainer: Lampros Mouselimis <mouselimislampros@gmail.com>
 BugReports: https://github.com/mlampros/SuperpixelImageSegmentation/issues
