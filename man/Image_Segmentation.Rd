@@ -109,7 +109,7 @@ pix_values[pix_values == target_cluster] = 1     # set the target_cluster to 1 (
 
 }
 \references{
-https://pdfs.semanticscholar.org/6533/654973054b742e725fd433265700c07b48a2.pdf , "Image Segmentation using SLIC Superpixels and Affinity Propagation Clustering", Bao Zhou, 2013, International Journal of Science and Research (IJSR)
+https://www.ijsr.net/archive/v4i4/SUB152869.pdf , "Image Segmentation using SLIC Superpixels and Affinity Propagation Clustering", Bao Zhou, 2013, International Journal of Science and Research (IJSR)
 }
 \section{Methods}{
 \subsection{Public methods}{

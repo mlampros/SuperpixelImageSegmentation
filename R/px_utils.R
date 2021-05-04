@@ -38,7 +38,8 @@
 #' @export
 #' @references
 #'
-#' https://pdfs.semanticscholar.org/6533/654973054b742e725fd433265700c07b48a2.pdf , "Image Segmentation using SLIC Superpixels and Affinity Propagation Clustering", Bao Zhou, 2013, International Journal of Science and Research (IJSR)
+#' https://www.ijsr.net/archive/v4i4/SUB152869.pdf , "Image Segmentation using SLIC Superpixels and Affinity Propagation Clustering", Bao Zhou, 2013, International Journal of Science and Research (IJSR)
+#'
 #' @details
 #'
 #' \emph{sim_wL}, \emph{sim_wA}, \emph{sim_wB} are the weights of the three channels. They keep balance so as to be consistent with human perception.
