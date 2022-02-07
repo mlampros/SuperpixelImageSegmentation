@@ -8,7 +8,7 @@
 #' @param superpixel a numeric value specifying the number of superpixels
 #' @param kmeans_method a character string specifying the kmeans method. If not empty ("") then it can be either "kmeans" or "mini_batch_kmeans"
 #' @param AP_data a boolean. If TRUE then the affinity propagation image data will be computed and returned
-#' @param use_median a boolean. If TRUE then the median will be used rather than the mean value for the inner computations
+#' @param use_median a boolean. If TRUE then the median will be used rather than the mean value for the inner computations (see the details section for more information)
 #' @param minib_kmeans_batch the size of the mini batches
 #' @param kmeans_num_init number of times the algorithm will be run with different centroid seeds
 #' @param kmeans_max_iters the maximum number of clustering iterations
@@ -56,6 +56,10 @@
 #'
 #' By setting the \emph{sim_normalize} parameter to TRUE, the affinity propagation algorithm requires less iterations to complete. However, the \emph{colorradius} parameter does not have an
 #' effect if the similarity matrix is normalized.
+#'
+#' Regarding the \emph{use_median} parameter in the Rcpp I use the following steps: \emph{1st.} I compute the superpixels and extract the labels, \emph{2nd.} each superpixel label consists of multiple pixels and for these superpixels I have
+#' to compute a dissimilarity matrix therefore each superpixel must correspond to a single value, \emph{3rd.} to come to this single value for each superpixel the R user has the option to either use the 'mean' or the 'median of multiple
+#' image pixels (per superpixel)
 #'
 #'
 #' ---------------kmeans initializers----------------------

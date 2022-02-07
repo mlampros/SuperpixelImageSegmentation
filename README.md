@@ -89,7 +89,7 @@ Use the following link to report bugs/issues,
 
 ### **Citation:**
 
-If you use the code of this repository in your paper or research please cite both **SuperpixelImageSegmentation** and the **original articles / software** [https://cran.r-project.org/web/packages/SuperpixelImageSegmentation/citation.html](https://cran.r-project.org/web/packages/SuperpixelImageSegmentation/citation.html):
+If you use the code of this repository in your paper or research please cite both **SuperpixelImageSegmentation** and the **original articles / software** `https://CRAN.R-project.org/package=SuperpixelImageSegmentation`:
 
 <br>
 
@@ -98,8 +98,8 @@ If you use the code of this repository in your paper or research please cite bot
   title = {{SuperpixelImageSegmentation}: Image Segmentation using
     Superpixels, Affinity Propagation and Kmeans Clustering},
   author = {Lampros Mouselimis},
-  year = {2021},
-  note = {R package version 1.0.4},
+  year = {2022},
+  note = {R package version 1.0.5},
   url =
     {https://CRAN.R-project.org/package=SuperpixelImageSegmentation},
 }

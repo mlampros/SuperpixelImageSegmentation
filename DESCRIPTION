@@ -1,8 +1,8 @@
 Package: SuperpixelImageSegmentation
 Type: Package
 Title: Superpixel Image Segmentation
-Version: 1.0.4
-Date: 2021-05-04
+Version: 1.0.5
+Date: 2022-02-06
 Authors@R: c( person(given = "Lampros", family = "Mouselimis", email = "mouselimislampros@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "https://orcid.org/0000-0002-8024-1546")))
 BugReports: https://github.com/mlampros/SuperpixelImageSegmentation/issues
 URL: https://github.com/mlampros/SuperpixelImageSegmentation
@@ -17,4 +17,4 @@ Suggests:
     covr,
     knitr,
     rmarkdown
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

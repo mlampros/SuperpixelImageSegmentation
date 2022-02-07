@@ -28,6 +28,10 @@ The \emph{affinity propagation} algorithm is used here with default parameter va
 By setting the \emph{sim_normalize} parameter to TRUE, the affinity propagation algorithm requires less iterations to complete. However, the \emph{colorradius} parameter does not have an
 effect if the similarity matrix is normalized.
 
+Regarding the \emph{use_median} parameter in the Rcpp I use the following steps: \emph{1st.} I compute the superpixels and extract the labels, \emph{2nd.} each superpixel label consists of multiple pixels and for these superpixels I have
+to compute a dissimilarity matrix therefore each superpixel must correspond to a single value, \emph{3rd.} to come to this single value for each superpixel the R user has the option to either use the 'mean' or the 'median of multiple
+image pixels (per superpixel)
+
 
 ---------------kmeans initializers----------------------
 
@@ -177,7 +181,7 @@ https://www.ijsr.net/archive/v4i4/SUB152869.pdf , "Image Segmentation using SLIC
 
 \item{\code{AP_data}}{a boolean. If TRUE then the affinity propagation image data will be computed and returned}
 
-\item{\code{use_median}}{a boolean. If TRUE then the median will be used rather than the mean value for the inner computations}
+\item{\code{use_median}}{a boolean. If TRUE then the median will be used rather than the mean value for the inner computations (see the details section for more information)}
 
 \item{\code{minib_kmeans_batch}}{the size of the mini batches}
 

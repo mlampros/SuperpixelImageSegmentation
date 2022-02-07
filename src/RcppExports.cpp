@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // simil_A
 double simil_A(arma::rowvec spx_vec1, arma::rowvec spx_vec2, int wL, int wA, int wB);
 RcppExport SEXP _SuperpixelImageSegmentation_simil_A(SEXP spx_vec1SEXP, SEXP spx_vec2SEXP, SEXP wLSEXP, SEXP wASEXP, SEXP wBSEXP) {

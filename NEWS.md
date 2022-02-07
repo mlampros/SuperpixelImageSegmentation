@@ -1,4 +1,9 @@
 
+## SuperpixelImageSegmentation 1.0.5
+
+* I updated the documentation
+
+
 ## SuperpixelImageSegmentation 1.0.4
 
 * I've added the *CITATION* file in the *inst* directory
