@@ -55,7 +55,7 @@ Segmentation of images based on Superpixels, Affinity propagation and Kmeans clu
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># init &lt;- Image_Segmentation$new()</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># init &lt;- Image_Segmentation$new()</span></span></code></pre></div>
     </div>
 
     <div id="details">
@@ -137,7 +137,7 @@ image pixels (per superpixel)</p>
 
 <div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va"><a href="../reference/Image_Segmentation.html">Image_Segmentation</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/Image_Segmentation.html">Image_Segmentation</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 
@@ -146,33 +146,33 @@ image pixels (per superpixel)</p>
 
 <div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">Image_Segmentation</span><span class="op">$</span><span class="fu">spixel_segmentation</span><span class="op">(</span>
-  <span class="va">input_image</span>,
-  method <span class="op">=</span> <span class="st">"slic"</span>,
-  superpixel <span class="op">=</span> <span class="fl">200</span>,
-  kmeans_method <span class="op">=</span> <span class="st">""</span>,
-  AP_data <span class="op">=</span> <span class="cn">FALSE</span>,
-  use_median <span class="op">=</span> <span class="cn">TRUE</span>,
-  minib_kmeans_batch <span class="op">=</span> <span class="fl">10</span>,
-  minib_kmeans_init_fraction <span class="op">=</span> <span class="fl">0.5</span>,
-  kmeans_num_init <span class="op">=</span> <span class="fl">3</span>,
-  kmeans_max_iters <span class="op">=</span> <span class="fl">100</span>,
-  kmeans_initializer <span class="op">=</span> <span class="st">"kmeans++"</span>,
-  colour_type <span class="op">=</span> <span class="st">"RGB"</span>,
-  compactness_factor <span class="op">=</span> <span class="fl">20</span>,
-  adjust_centroids_and_return_masks <span class="op">=</span> <span class="cn">FALSE</span>,
-  return_labels_2_dimensionsional <span class="op">=</span> <span class="cn">FALSE</span>,
-  sim_normalize <span class="op">=</span> <span class="cn">FALSE</span>,
-  sim_wL <span class="op">=</span> <span class="fl">3</span>,
-  sim_wA <span class="op">=</span> <span class="fl">10</span>,
-  sim_wB <span class="op">=</span> <span class="fl">10</span>,
-  sim_color_radius <span class="op">=</span> <span class="fl">20</span>,
-  ap_maxits <span class="op">=</span> <span class="fl">1000</span>,
-  ap_convits <span class="op">=</span> <span class="fl">100</span>,
-  ap_dampfact <span class="op">=</span> <span class="fl">0.9</span>,
-  ap_nonoise <span class="op">=</span> <span class="fl">0</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Image_Segmentation</span><span class="op">$</span><span class="fu">spixel_segmentation</span><span class="op">(</span></span>
+<span>  <span class="va">input_image</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"slic"</span>,</span>
+<span>  superpixel <span class="op">=</span> <span class="fl">200</span>,</span>
+<span>  kmeans_method <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  AP_data <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  use_median <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  minib_kmeans_batch <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  minib_kmeans_init_fraction <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  kmeans_num_init <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  kmeans_max_iters <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  kmeans_initializer <span class="op">=</span> <span class="st">"kmeans++"</span>,</span>
+<span>  colour_type <span class="op">=</span> <span class="st">"RGB"</span>,</span>
+<span>  compactness_factor <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>  adjust_centroids_and_return_masks <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  return_labels_2_dimensionsional <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  sim_normalize <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  sim_wL <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  sim_wA <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  sim_wB <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  sim_color_radius <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>  ap_maxits <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  ap_convits <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  ap_dampfact <span class="op">=</span> <span class="fl">0.9</span>,</span>
+<span>  ap_nonoise <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -285,12 +285,12 @@ image pixels (per superpixel)</p>
 
 <div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">Image_Segmentation</span><span class="op">$</span><span class="fu">spixel_masks_show</span><span class="op">(</span>
-  delay_display_seconds <span class="op">=</span> <span class="fl">3</span>,
-  display_all <span class="op">=</span> <span class="cn">FALSE</span>,
-  margin_btw_plots <span class="op">=</span> <span class="fl">0.15</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Image_Segmentation</span><span class="op">$</span><span class="fu">spixel_masks_show</span><span class="op">(</span></span>
+<span>  delay_display_seconds <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  display_all <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  margin_btw_plots <span class="op">=</span> <span class="fl">0.15</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -319,11 +319,11 @@ image pixels (per superpixel)</p>
 
 <div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">Image_Segmentation</span><span class="op">$</span><span class="fu">spixel_clusters_show</span><span class="op">(</span>
-  <span class="va">spix_labels</span>,
-  color_palette <span class="op">=</span> <span class="fu">grDevices</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span>,
-  parameter_list_png <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Image_Segmentation</span><span class="op">$</span><span class="fu">spixel_clusters_show</span><span class="op">(</span></span>
+<span>  <span class="va">spix_labels</span>,</span>
+<span>  color_palette <span class="op">=</span> <span class="fu">grDevices</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span>,</span>
+<span>  parameter_list_png <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -347,7 +347,7 @@ image pixels (per superpixel)</p>
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">Image_Segmentation</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">Image_Segmentation</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -365,52 +365,52 @@ image pixels (per superpixel)</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mlampros/SuperpixelImageSegmentation" class="external-link">SuperpixelImageSegmentation</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">path</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"images"</span>, <span class="st">"BSR_bsds500_image.jpg"</span>, package <span class="op">=</span> <span class="st">"SuperpixelImageSegmentation"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">im</span> <span class="op">=</span> <span class="fu">OpenImageR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/OpenImageR/man/readImage.html" class="external-link">readImage</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">init</span> <span class="op">=</span> <span class="va">Image_Segmentation</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">num_spix</span> <span class="op">=</span> <span class="fl">10</span>           <span class="co"># for illustration purposes</span></span>
-<span class="r-in"><span class="co"># num_spix = 600        # recommended number of superpixels</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">spx</span> <span class="op">=</span> <span class="va">init</span><span class="op">$</span><span class="fu">spixel_segmentation</span><span class="op">(</span>input_image <span class="op">=</span> <span class="va">im</span>,</span>
-<span class="r-in">                               superpixel <span class="op">=</span> <span class="va">num_spix</span>,</span>
-<span class="r-in">                               AP_data <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">                               use_median <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">                               return_labels_2_dimensionsional <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">                               sim_color_radius <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mlampros/SuperpixelImageSegmentation" class="external-link">SuperpixelImageSegmentation</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">path</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"images"</span>, <span class="st">"BSR_bsds500_image.jpg"</span>, package <span class="op">=</span> <span class="st">"SuperpixelImageSegmentation"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">im</span> <span class="op">=</span> <span class="fu">OpenImageR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/OpenImageR/man/readImage.html" class="external-link">readImage</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">init</span> <span class="op">=</span> <span class="va">Image_Segmentation</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">num_spix</span> <span class="op">=</span> <span class="fl">10</span>           <span class="co"># for illustration purposes</span></span></span>
+<span class="r-in"><span><span class="co"># num_spix = 600        # recommended number of superpixels</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">spx</span> <span class="op">=</span> <span class="va">init</span><span class="op">$</span><span class="fu">spixel_segmentation</span><span class="op">(</span>input_image <span class="op">=</span> <span class="va">im</span>,</span></span>
+<span class="r-in"><span>                               superpixel <span class="op">=</span> <span class="va">num_spix</span>,</span></span>
+<span class="r-in"><span>                               AP_data <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>                               use_median <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>                               return_labels_2_dimensionsional <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>                               sim_color_radius <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The input data has values between 0.000000 and 1.000000. The image-data will be multiplied by the value: 255!</span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#...........................</span></span>
-<span class="r-in"><span class="co"># plot the superpixel labels</span></span>
-<span class="r-in"><span class="co">#...........................</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">plt</span> <span class="op">=</span> <span class="va">init</span><span class="op">$</span><span class="fu">spixel_clusters_show</span><span class="op">(</span>spix_labels <span class="op">=</span> <span class="va">spx</span><span class="op">$</span><span class="va">spix_labels</span>,</span>
-<span class="r-in">                                color_palette <span class="op">=</span> <span class="fu">grDevices</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span>,</span>
-<span class="r-in">                                parameter_list_png <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#...........................</span></span></span>
+<span class="r-in"><span><span class="co"># plot the superpixel labels</span></span></span>
+<span class="r-in"><span><span class="co">#...........................</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">plt</span> <span class="op">=</span> <span class="va">init</span><span class="op">$</span><span class="fu">spixel_clusters_show</span><span class="op">(</span>spix_labels <span class="op">=</span> <span class="va">spx</span><span class="op">$</span><span class="va">spix_labels</span>,</span></span>
+<span class="r-in"><span>                                color_palette <span class="op">=</span> <span class="fu">grDevices</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">rainbow</a></span>,</span></span>
+<span class="r-in"><span>                                parameter_list_png <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>device support for raster images unknown, ignoring 'raster=TRUE'</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># plt</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#....................................................</span></span>
-<span class="r-in"><span class="co"># create a binary image for a specified cluster label</span></span>
-<span class="r-in"><span class="co">#....................................................</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">pix_values</span> <span class="op">=</span> <span class="va">spx</span><span class="op">$</span><span class="va">spix_labels</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">target_cluster</span> <span class="op">=</span> <span class="fl">3</span>                               <span class="co"># determine clusters visually ('plt' variable)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">pix_values</span><span class="op">[</span><span class="va">pix_values</span> <span class="op">!=</span> <span class="va">target_cluster</span><span class="op">]</span> <span class="op">=</span> <span class="fl">0</span>     <span class="co"># set all other values to 0 (background)</span></span>
-<span class="r-in"><span class="va">pix_values</span><span class="op">[</span><span class="va">pix_values</span> <span class="op">==</span> <span class="va">target_cluster</span><span class="op">]</span> <span class="op">=</span> <span class="fl">1</span>     <span class="co"># set the target_cluster to 1 (binary image)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># OpenImageR::imageShow(pix_values)</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># plt</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#....................................................</span></span></span>
+<span class="r-in"><span><span class="co"># create a binary image for a specified cluster label</span></span></span>
+<span class="r-in"><span><span class="co">#....................................................</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">pix_values</span> <span class="op">=</span> <span class="va">spx</span><span class="op">$</span><span class="va">spix_labels</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">target_cluster</span> <span class="op">=</span> <span class="fl">3</span>                               <span class="co"># determine clusters visually ('plt' variable)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">pix_values</span><span class="op">[</span><span class="va">pix_values</span> <span class="op">!=</span> <span class="va">target_cluster</span><span class="op">]</span> <span class="op">=</span> <span class="fl">0</span>     <span class="co"># set all other values to 0 (background)</span></span></span>
+<span class="r-in"><span><span class="va">pix_values</span><span class="op">[</span><span class="va">pix_values</span> <span class="op">==</span> <span class="va">target_cluster</span><span class="op">]</span> <span class="op">=</span> <span class="fl">1</span>     <span class="co"># set the target_cluster to 1 (binary image)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># OpenImageR::imageShow(pix_values)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -425,7 +425,7 @@ image pixels (per superpixel)</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

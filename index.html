@@ -84,40 +84,39 @@
 <p>The <em>SuperpixelImageSegmentation</em> package can be installed from CRAN using,</p>
 <p><br></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"SuperpixelImageSegmentation"</span><span class="op">)</span>
- </code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"SuperpixelImageSegmentation"</span><span class="op">)</span></span>
+<span> </span></code></pre></div>
 <p><br></p>
 <p><strong>or</strong> by using the <em>install_github</em> function of the devtools package, <br><br></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'mlampros/SuperpixelImageSegmentation'</span><span class="op">)</span>
-</code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">'mlampros/SuperpixelImageSegmentation'</span><span class="op">)</span></span></code></pre></div>
 <p><br></p>
 <p><strong>or</strong> by directly downloading the .zip file using the <strong>Clone or download</strong> button in the <a href="https://github.com/mlampros/SuperpixelImageSegmentation" class="external-link">repository page</a>, extracting it locally (renaming it to <em>SuperpixelImageSegmentation</em> if necessary) and running,</p>
 <p><br></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">#--------</span>
-<span class="co"># on Unix</span>
-<span class="co">#--------</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">'/your_folder/SuperpixelImageSegmentation/'</span><span class="op">)</span>
-<span class="fu">Rcpp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Rcpp/man/compileAttributes.html" class="external-link">compileAttributes</a></span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">'/your_folder/'</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/system.html" class="external-link">system</a></span><span class="op">(</span><span class="st">"R CMD build SuperpixelImageSegmentation"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/system.html" class="external-link">system</a></span><span class="op">(</span><span class="st">"R CMD INSTALL SuperpixelImageSegmentation_1.0.0.tar.gz"</span><span class="op">)</span>
-
-
-<span class="co">#-----------</span>
-<span class="co"># on Windows</span>
-<span class="co">#-----------</span>
-
-<span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">'C:/your_folder/SuperpixelImageSegmentation/'</span><span class="op">)</span>
-<span class="fu">Rcpp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Rcpp/man/compileAttributes.html" class="external-link">compileAttributes</a></span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">'C:/your_folder/'</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/system.html" class="external-link">system</a></span><span class="op">(</span><span class="st">"R CMD build SuperpixelImageSegmentation"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/system.html" class="external-link">system</a></span><span class="op">(</span><span class="st">"R CMD INSTALL SuperpixelImageSegmentation_1.0.0.tar.gz"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span></span>
+<span><span class="co">#--------</span></span>
+<span><span class="co"># on Unix</span></span>
+<span><span class="co">#--------</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">'/your_folder/SuperpixelImageSegmentation/'</span><span class="op">)</span></span>
+<span><span class="fu">Rcpp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Rcpp/man/compileAttributes.html" class="external-link">compileAttributes</a></span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">'/your_folder/'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.html" class="external-link">system</a></span><span class="op">(</span><span class="st">"R CMD build SuperpixelImageSegmentation"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.html" class="external-link">system</a></span><span class="op">(</span><span class="st">"R CMD INSTALL SuperpixelImageSegmentation_1.0.0.tar.gz"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">#-----------</span></span>
+<span><span class="co"># on Windows</span></span>
+<span><span class="co">#-----------</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">'C:/your_folder/SuperpixelImageSegmentation/'</span><span class="op">)</span></span>
+<span><span class="fu">Rcpp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Rcpp/man/compileAttributes.html" class="external-link">compileAttributes</a></span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="st">'C:/your_folder/'</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.html" class="external-link">system</a></span><span class="op">(</span><span class="st">"R CMD build SuperpixelImageSegmentation"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.html" class="external-link">system</a></span><span class="op">(</span><span class="st">"R CMD INSTALL SuperpixelImageSegmentation_1.0.0.tar.gz"</span><span class="op">)</span></span></code></pre></div>
 <p><br></p>
 <p>Use the following link to report bugs/issues, <br><br></p>
 <p><a href="https://github.com/mlampros/SuperpixelImageSegmentation/issues" class="external-link">https://github.com/mlampros/SuperpixelImageSegmentation/issues</a></p>
@@ -198,7 +197,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
