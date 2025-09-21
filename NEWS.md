@@ -1,4 +1,11 @@
 
+## SuperpixelImageSegmentation 1.0.6
+
+* I updated the `Makevars` and `Makevars.win` files by adding `-DARMA_USE_CURRENT` (see issue: https://github.com/RcppCore/RcppArmadillo/issues/476)
+* I removed the `-mthreads` compilation option from the "Makevars.win" file
+* I removed the "CXX_STD = CXX11" from the "Makevars" files, and the "[[Rcpp::plugins(cpp11)]]" from the "superPx_AP_Kmeans_Segment.cpp" file due to the following NOTE from CRAN, "NOTE Specified C++11: please drop specification unless essential" (see also: https://www.tidyverse.org/blog/2023/03/cran-checks-compiled-code/#note-regarding-systemrequirements-c11)
+
+
 ## SuperpixelImageSegmentation 1.0.5
 
 * I updated the documentation

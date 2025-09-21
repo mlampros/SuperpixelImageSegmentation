@@ -118,16 +118,16 @@ https://www.ijsr.net/archive/v4i4/SUB152869.pdf , "Image Segmentation using SLIC
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Image_Segmentation$new()}}
-\item \href{#method-spixel_segmentation}{\code{Image_Segmentation$spixel_segmentation()}}
-\item \href{#method-spixel_masks_show}{\code{Image_Segmentation$spixel_masks_show()}}
-\item \href{#method-spixel_clusters_show}{\code{Image_Segmentation$spixel_clusters_show()}}
-\item \href{#method-clone}{\code{Image_Segmentation$clone()}}
+\item \href{#method-Image_Segmentation-new}{\code{Image_Segmentation$new()}}
+\item \href{#method-Image_Segmentation-spixel_segmentation}{\code{Image_Segmentation$spixel_segmentation()}}
+\item \href{#method-Image_Segmentation-spixel_masks_show}{\code{Image_Segmentation$spixel_masks_show()}}
+\item \href{#method-Image_Segmentation-spixel_clusters_show}{\code{Image_Segmentation$spixel_clusters_show()}}
+\item \href{#method-Image_Segmentation-clone}{\code{Image_Segmentation$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Image_Segmentation-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Image_Segmentation-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Image_Segmentation$new()}\if{html}{\out{</div>}}
@@ -135,8 +135,8 @@ https://www.ijsr.net/archive/v4i4/SUB152869.pdf , "Image Segmentation using SLIC
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-spixel_segmentation"></a>}}
-\if{latex}{\out{\hypertarget{method-spixel_segmentation}{}}}
+\if{html}{\out{<a id="method-Image_Segmentation-spixel_segmentation"></a>}}
+\if{latex}{\out{\hypertarget{method-Image_Segmentation-spixel_segmentation}{}}}
 \subsection{Method \code{spixel_segmentation()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Image_Segmentation$spixel_segmentation(
@@ -225,8 +225,8 @@ https://www.ijsr.net/archive/v4i4/SUB152869.pdf , "Image Segmentation using SLIC
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-spixel_masks_show"></a>}}
-\if{latex}{\out{\hypertarget{method-spixel_masks_show}{}}}
+\if{html}{\out{<a id="method-Image_Segmentation-spixel_masks_show"></a>}}
+\if{latex}{\out{\hypertarget{method-Image_Segmentation-spixel_masks_show}{}}}
 \subsection{Method \code{spixel_masks_show()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Image_Segmentation$spixel_masks_show(
@@ -252,8 +252,8 @@ https://www.ijsr.net/archive/v4i4/SUB152869.pdf , "Image Segmentation using SLIC
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-spixel_clusters_show"></a>}}
-\if{latex}{\out{\hypertarget{method-spixel_clusters_show}{}}}
+\if{html}{\out{<a id="method-Image_Segmentation-spixel_clusters_show"></a>}}
+\if{latex}{\out{\hypertarget{method-Image_Segmentation-spixel_clusters_show}{}}}
 \subsection{Method \code{spixel_clusters_show()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Image_Segmentation$spixel_clusters_show(
@@ -276,8 +276,8 @@ https://www.ijsr.net/archive/v4i4/SUB152869.pdf , "Image Segmentation using SLIC
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Image_Segmentation-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Image_Segmentation-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

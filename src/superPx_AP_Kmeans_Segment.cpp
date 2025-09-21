@@ -5,7 +5,6 @@
 // [[Rcpp::depends("RcppArmadillo")]]
 // [[Rcpp::depends(ClusterR)]]
 // [[Rcpp::depends(OpenImageR)]]
-// [[Rcpp::plugins(cpp11)]]
 
 
 # include <cmath>

@@ -98,8 +98,8 @@ If you use the code of this repository in your paper or research please cite bot
   title = {{SuperpixelImageSegmentation}: Image Segmentation using
     Superpixels, Affinity Propagation and Kmeans Clustering},
   author = {Lampros Mouselimis},
-  year = {2022},
-  note = {R package version 1.0.5},
+  year = {2025},
+  note = {R package version 1.0.6},
   url =
     {https://CRAN.R-project.org/package=SuperpixelImageSegmentation},
 }
