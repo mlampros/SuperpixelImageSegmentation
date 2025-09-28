@@ -1,6 +1,7 @@
 ^.git$
 ^.github$
-^codecov.yml$
 ^\.ccache$
 ^\.github$
-^tic\.R$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
