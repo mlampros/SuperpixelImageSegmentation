@@ -35,12 +35,12 @@ install.packages("SuperpixelImageSegmentation")
 ```
 <br>
 
-**or** by using the *install_github* function of the devtools package,
+**or** download the latest version from Github using the *pak* package,
 <br><br>
 
 ```R
 
-remotes::install_github('mlampros/SuperpixelImageSegmentation')
+pak::pak('mlampros/SuperpixelImageSegmentation')
 
 
 ```
